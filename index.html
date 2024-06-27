@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM#1</title>
+  <style>
+    .highlight {
+      background-color: yellow;
+    }
+
+    .underline {
+      text-decoration: underline;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+
+    .visible {
+      display: block;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .disabled {
+      pointer-events: none;
+      background-color: rgb(182, 0, 164);
+      color: white;
+    }
+
+    .visible {
+      background-color: aqua;
+      font-size: large;
+      display: flex;
+
+    }
+  </style>
+</head>
+
+<body>
+  <p id="text">DOM job number 1</p>
+  <input type="text" id="classInput" placeholder="Enter class name">
+  <button onclick="addClass()">Add Class</button>
+  <section>
+    <div style="display: flex;">
+      <p id="para1" class="visible">זו פסקה Java Script</p>
+    </div>
+    <div style="display: flex;">
+      <p id="para2" class="visible">זאת פסקה Style</p>
+    </div>
+    <div style="display: flex;">
+      <p id="para3" class="visible">זו פסקה של HTML</p>
+    </div>
+
+    <button onclick="toggleVisibility('para1')">הצג/הסתר פסקה Java Script</button>
+    <button onclick="toggleVisibility('para2')">הצג/הסתר פסקה Style</button>
+    <button onclick="toggleVisibility('para3')">הצג/הסתר פסקה HTML</button>
+  </section>
+  <section>
+    <p>
+      <button id="toggleButton" onclick="changeButtonText()">לחץ עלי</button>
+    </p>
+  </section>
+  <script>
+    function addClass() {
+      var className = document.getElementById('classInput').value;
+      var paragraph = document.getElementById('text');
+      paragraph.classList.add(className);
+    }
+    function toggleVisibility(elementId) {
+      var element = document.getElementById(elementId);
+      if (element.classList.contains('visible')) {
+        element.classList.remove('visible');
+        element.classList.add('hidden');
+      } else {
+        element.classList.remove('hidden');
+        element.classList.add('visible');
+      }
+    }
+    function changeButtonText() {
+      var button = document.getElementById('toggleButton');
+      button.textContent = "לחץ!";
+      button.classList.add('disabled');
+    }
+  </script>
+</body>
+
+</html>
